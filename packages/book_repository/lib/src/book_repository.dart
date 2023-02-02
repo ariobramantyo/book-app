@@ -35,7 +35,7 @@ class BookRepositoryImpl extends BookRepository {
   BookRepositoryImpl(
       {BookApiService? bookApiService,
       FlutterSecureStorage? flutterSecureStorage})
-      : _bookApiService = bookApiService ?? BookApiService(),
+      : _bookApiService = bookApiService ?? BookApiServiceImpl(),
         _flutterSecureStorage =
             flutterSecureStorage ?? const FlutterSecureStorage();
 

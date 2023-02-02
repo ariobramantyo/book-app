@@ -27,7 +27,7 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
   AuthenticationRepositoryImpl._internal(
       {AuthApiService? authApiService,
       FlutterSecureStorage? flutterSecureStorage})
-      : _authApiService = authApiService ?? AuthApiService(),
+      : _authApiService = authApiService ?? AuthApiServiceImpl(),
         _flutterSecureStorage =
             flutterSecureStorage ?? const FlutterSecureStorage();
 
