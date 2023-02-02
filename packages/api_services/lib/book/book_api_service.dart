@@ -3,7 +3,36 @@ import 'dart:convert';
 import 'package:api_services/api_services.dart';
 import 'package:http/http.dart' as http;
 
-class BookApiService {
+abstract class BookApiService {
+  Future<List<Book>> getBooks(String token);
+  Future<void> addBook(
+      String token,
+      String isbn,
+      String title,
+      String subtitle,
+      String author,
+      String published,
+      String publisher,
+      String pages,
+      String description,
+      String website);
+  Future<void> deleteBook(String token, int bookId);
+  Future<void> updateBook(
+      String token,
+      int boodId,
+      String isbn,
+      String title,
+      String subtitle,
+      String author,
+      String published,
+      String publisher,
+      String pages,
+      String description,
+      String website);
+}
+
+class BookApiServiceImpl extends BookApiService {
+  @override
   Future<List<Book>> getBooks(String token) async {
     final url = Uri.parse("$baseUrl/api/books");
 
@@ -21,6 +50,7 @@ class BookApiService {
     return books;
   }
 
+  @override
   Future<void> addBook(
     String token,
     String isbn,
@@ -53,6 +83,7 @@ class BookApiService {
     }
   }
 
+  @override
   Future<void> deleteBook(String token, int bookId) async {
     final url = Uri.parse("$baseUrl/api/books/$bookId");
 
@@ -66,6 +97,7 @@ class BookApiService {
     }
   }
 
+  @override
   Future<void> updateBook(
     String token,
     int boodId,
