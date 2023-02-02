@@ -8,8 +8,8 @@ import 'features/auth/bloc/auth_bloc.dart';
 
 void main() {
   runApp(App(
-    authenticationRepository: AuthenticationRepository(),
-    bookRepository: BookRepository(),
+    authenticationRepository: AuthenticationRepositoryImpl(),
+    bookRepository: BookRepositoryImpl(),
   ));
 }
 
