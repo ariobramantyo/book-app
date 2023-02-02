@@ -5,7 +5,16 @@ import 'dart:developer';
 
 const String baseUrl = 'https://basic-book-crud-e3u54evafq-et.a.run.app';
 
-class AuthApiService {
+abstract class AuthApiService {
+  Future<Login> login(String email, String password);
+
+  Future<void> register(String name, String email, String password);
+
+  Future<void> logout(String token);
+}
+
+class AuthApiServiceImpl extends AuthApiService {
+  @override
   Future<Login> login(String email, String password) async {
     final url = Uri.parse('$baseUrl/api/login');
 
@@ -19,6 +28,7 @@ class AuthApiService {
     return Login.fromJson(jsonDecode(loginResponse.body));
   }
 
+  @override
   Future<void> register(String name, String email, String password) async {
     final url = Uri.parse('$baseUrl/api/register');
 
@@ -37,6 +47,7 @@ class AuthApiService {
     }
   }
 
+  @override
   Future<void> logout(String token) async {
     final url = Uri.parse('$baseUrl/api/user/logout');
 
