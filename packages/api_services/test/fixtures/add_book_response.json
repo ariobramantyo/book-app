@@ -1,0 +1,18 @@
+{
+    "message": "Book created",
+    "book": {
+      "id": 1,
+      "user_id": 1,
+      "isbn": "9781491943533",
+      "title": "Practical Modern JavaScript",
+      "subtitle": "Dive into ES6 and the Future of JavaScript",
+      "author": "Nicolás Bevacqua",
+      "published": "2017-07-16 00:00:00",
+      "publisher": "O'Reilly Media",
+      "pages": 334,
+      "description": "To get the most out of modern JavaScript, you need learn the latest features of its parent specification, ECMAScript 6 (ES6). This book provides a highly practical look at ES6, without getting lost in the specification or its implementation details.",
+      "website": "https://github.com/mjavascript/practical-modern-javascript",
+      "created_at": "2023-01-12T14:50:05.000000Z",
+      "updated_at": "2023-01-12T14:50:05.000000Z"
+    }
+  }

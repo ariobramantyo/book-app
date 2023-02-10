@@ -1,0 +1,45 @@
+{
+    "current_page": 1,
+    "data": [
+      {
+        "id": 1,
+        "user_id": 1,
+        "isbn": "9781491943533",
+        "title": "Practical Modern JavaScript",
+        "subtitle": "Dive into ES6 and the Future of JavaScript",
+        "author": "Nicolás Bevacqua",
+        "published": "2017-07-16 00:00:00",
+        "publisher": "O'Reilly Media",
+        "pages": 334,
+        "description": "To get the most out of modern JavaScript, you need learn the latest features of its parent specification, ECMAScript 6 (ES6). This book provides a highly practical look at ES6, without getting lost in the specification or its implementation details.",
+        "website": "https://github.com/mjavascript/practical-modern-javascript",
+        "created_at": "2023-01-12T14:50:05.000000Z",
+        "updated_at": "2023-01-12T14:50:05.000000Z"
+      },
+      {
+        "id": 1,
+        "user_id": 1,
+        "isbn": "9781491943533",
+        "title": "Practical Modern JavaScript",
+        "subtitle": "Dive into ES6 and the Future of JavaScript",
+        "author": "Nicolás Bevacqua",
+        "published": "2017-07-16 00:00:00",
+        "publisher": "O'Reilly Media",
+        "pages": 334,
+        "description": "To get the most out of modern JavaScript, you need learn the latest features of its parent specification, ECMAScript 6 (ES6). This book provides a highly practical look at ES6, without getting lost in the specification or its implementation details.",
+        "website": "https://github.com/mjavascript/practical-modern-javascript",
+        "created_at": "2023-01-12T14:50:05.000000Z",
+        "updated_at": "2023-01-12T14:50:05.000000Z"
+      }
+    ],
+    "first_page_url": "https://basic-book-crud-e3u54evafq-et.a.run.app/api/books?page=1",
+    "from": 1,
+    "last_page": 2,
+    "last_page_url": "https://basic-book-crud-e3u54evafq-et.a.run.app/api/books?page=2",
+    "next_page_url": "https://basic-book-crud-e3u54evafq-et.a.run.app/api/books?page=2",
+    "path": "https://basic-book-crud-e3u54evafq-et.a.run.app/api/books",
+    "per_page": 10,
+    "prev_page_url": "https://basic-book-crud-e3u54evafq-et.a.run.app/api/books?page=1",
+    "to": 10,
+    "total": 16
+  }
