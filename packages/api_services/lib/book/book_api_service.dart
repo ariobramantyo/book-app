@@ -32,12 +32,16 @@ abstract class BookApiService {
 }
 
 class BookApiServiceImpl extends BookApiService {
+  final http.Client client;
+
+  BookApiServiceImpl({required this.client});
+
   @override
   Future<List<Book>> getBooks(String token) async {
     final url = Uri.parse("$baseUrl/api/books");
 
     final response =
-        await http.get(url, headers: {'Authorization': 'Bearer $token'});
+        await client.get(url, headers: {'Authorization': 'Bearer $token'});
 
     if (response.statusCode != 200) {
       throw Exception(jsonDecode(response.body)['message']);
@@ -75,7 +79,7 @@ class BookApiServiceImpl extends BookApiService {
     if (description.isNotEmpty) body['description'] = description;
     if (website.isNotEmpty) body['website'] = website;
 
-    final response = await http.post(url,
+    final response = await client.post(url,
         headers: {'Authorization': 'Bearer $token'}, body: body);
 
     if (response.statusCode != 200) {
@@ -87,7 +91,7 @@ class BookApiServiceImpl extends BookApiService {
   Future<void> deleteBook(String token, int bookId) async {
     final url = Uri.parse("$baseUrl/api/books/$bookId");
 
-    final response = await http.delete(
+    final response = await client.delete(
       url,
       headers: {'Authorization': 'Bearer $token'},
     );
@@ -113,7 +117,7 @@ class BookApiServiceImpl extends BookApiService {
   ) async {
     final url = Uri.parse("$baseUrl/api/books/$boodId/edit");
 
-    final response = await http.put(
+    final response = await client.put(
       url,
       headers: {'Authorization': 'Bearer $token'},
       body: {
