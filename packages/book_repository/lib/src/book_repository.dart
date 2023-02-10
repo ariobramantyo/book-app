@@ -29,21 +29,17 @@ abstract class BookRepository {
 }
 
 class BookRepositoryImpl extends BookRepository {
-  final BookApiService _bookApiService;
-  final FlutterSecureStorage _flutterSecureStorage;
+  final BookApiService bookApiService;
+  final FlutterSecureStorage flutterSecureStorage;
 
   BookRepositoryImpl(
-      {BookApiService? bookApiService,
-      FlutterSecureStorage? flutterSecureStorage})
-      : _bookApiService = bookApiService ?? BookApiServiceImpl(),
-        _flutterSecureStorage =
-            flutterSecureStorage ?? const FlutterSecureStorage();
+      {required this.bookApiService, required this.flutterSecureStorage});
 
   @override
   Future<List<Book>> getBooks() async {
-    final token = await _flutterSecureStorage.read(key: 'TOKEN');
+    final token = await flutterSecureStorage.read(key: 'TOKEN');
 
-    final books = await _bookApiService.getBooks(token!);
+    final books = await bookApiService.getBooks(token!);
 
     return books;
   }
@@ -59,17 +55,17 @@ class BookRepositoryImpl extends BookRepository {
       String pages,
       String description,
       String website) async {
-    final token = await _flutterSecureStorage.read(key: 'TOKEN');
+    final token = await flutterSecureStorage.read(key: 'TOKEN');
 
-    await _bookApiService.addBook(token!, isbn, title, subtitle, author,
+    await bookApiService.addBook(token!, isbn, title, subtitle, author,
         published, publisher, pages, description, website);
   }
 
   @override
   Future<void> deleteBook(int bookId) async {
-    final token = await _flutterSecureStorage.read(key: 'TOKEN');
+    final token = await flutterSecureStorage.read(key: 'TOKEN');
 
-    await _bookApiService.deleteBook(token!, bookId);
+    await bookApiService.deleteBook(token!, bookId);
   }
 
   @override
@@ -84,9 +80,9 @@ class BookRepositoryImpl extends BookRepository {
       String pages,
       String description,
       String website) async {
-    final token = await _flutterSecureStorage.read(key: 'TOKEN');
+    final token = await flutterSecureStorage.read(key: 'TOKEN');
 
-    await _bookApiService.updateBook(token!, bookId, isbn, title, subtitle,
+    await bookApiService.updateBook(token!, bookId, isbn, title, subtitle,
         author, published, publisher, pages, description, website);
   }
 }
