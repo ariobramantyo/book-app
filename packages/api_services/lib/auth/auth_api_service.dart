@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:api_services/auth/model/login.dart';
 import 'package:http/http.dart' as http;
-import 'dart:developer';
 
 const String baseUrl = 'https://basic-book-crud-e3u54evafq-et.a.run.app';
 
@@ -14,12 +13,16 @@ abstract class AuthApiService {
 }
 
 class AuthApiServiceImpl extends AuthApiService {
+  final http.Client httpClient;
+
+  AuthApiServiceImpl({required this.httpClient});
+
   @override
   Future<Login> login(String email, String password) async {
     final url = Uri.parse('$baseUrl/api/login');
 
-    final loginResponse =
-        await http.post(url, body: {'email': email, 'password': password});
+    final loginResponse = await httpClient
+        .post(url, body: {'email': email, 'password': password});
 
     if (loginResponse.statusCode != 200) {
       throw Exception(jsonDecode(loginResponse.body)['message']);
@@ -32,7 +35,7 @@ class AuthApiServiceImpl extends AuthApiService {
   Future<void> register(String name, String email, String password) async {
     final url = Uri.parse('$baseUrl/api/register');
 
-    final registerResponse = await http.post(
+    final registerResponse = await httpClient.post(
       url,
       body: {
         "name": name,
@@ -51,7 +54,7 @@ class AuthApiServiceImpl extends AuthApiService {
   Future<void> logout(String token) async {
     final url = Uri.parse('$baseUrl/api/user/logout');
 
-    final looutResponse = await http.delete(
+    final looutResponse = await httpClient.delete(
       url,
       headers: {'Authorization': 'Bearer $token'},
     );
