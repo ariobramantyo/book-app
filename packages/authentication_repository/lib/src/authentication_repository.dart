@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:api_services/api_services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:http/http.dart' as http;
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
@@ -20,14 +21,15 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
   final FlutterSecureStorage _flutterSecureStorage;
 
   static final AuthenticationRepositoryImpl _instance =
-      AuthenticationRepositoryImpl._internal();
+      AuthenticationRepositoryImpl.internal();
 
   factory AuthenticationRepositoryImpl() => _instance;
 
-  AuthenticationRepositoryImpl._internal(
+  AuthenticationRepositoryImpl.internal(
       {AuthApiService? authApiService,
       FlutterSecureStorage? flutterSecureStorage})
-      : _authApiService = authApiService ?? AuthApiServiceImpl(),
+      : _authApiService =
+            authApiService ?? AuthApiServiceImpl(httpClient: http.Client()),
         _flutterSecureStorage =
             flutterSecureStorage ?? const FlutterSecureStorage();
 
