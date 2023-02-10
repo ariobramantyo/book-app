@@ -1,15 +1,20 @@
+import 'package:api_services/api_services.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:book_app/features/auth/wrapper.dart';
 import 'package:book_repository/book_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:http/http.dart' as http;
 
 import 'features/auth/bloc/auth_bloc.dart';
 
 void main() {
   runApp(App(
     authenticationRepository: AuthenticationRepositoryImpl(),
-    bookRepository: BookRepositoryImpl(),
+    bookRepository: BookRepositoryImpl(
+        bookApiService: BookApiServiceImpl(client: http.Client()),
+        flutterSecureStorage: const FlutterSecureStorage()),
   ));
 }
 
