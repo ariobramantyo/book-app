@@ -1,4 +1,6 @@
-class BookResult {
+import 'package:equatable/equatable.dart';
+
+class BookResult extends Equatable {
   final int currentPage;
   final List<Book> data;
   final String firstPageUrl;
@@ -34,7 +36,7 @@ class BookResult {
         //     data!.add(new Data.fromJson(v)),
         //   }),
         // }
-        data: json['data'].map((book) => Book.fromJson(book)).toList(),
+        data: json['data'].map<Book>((book) => Book.fromJson(book)).toList(),
         firstPageUrl: json['first_page_url'],
         from: json['from'],
         lastPage: json['last_page'],
@@ -65,9 +67,25 @@ class BookResult {
     data['total'] = this.total;
     return data;
   }
+
+  @override
+  List<Object?> get props => [
+        currentPage,
+        data,
+        firstPageUrl,
+        from,
+        lastPage,
+        lastPageUrl,
+        nextPageUrl,
+        path,
+        perPage,
+        prevPageUrl,
+        to,
+        total
+      ];
 }
 
-class Book {
+class Book extends Equatable {
   final int id;
   final int userId;
   final String isbn;
@@ -130,4 +148,21 @@ class Book {
     data['updated_at'] = this.updatedAt;
     return data;
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        userId,
+        isbn,
+        title,
+        subtitle,
+        author,
+        published,
+        publisher,
+        pages,
+        description,
+        website,
+        createdAt,
+        updatedAt,
+      ];
 }
