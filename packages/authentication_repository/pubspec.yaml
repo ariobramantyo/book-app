@@ -13,11 +13,13 @@ dependencies:
   api_services:
     path: ../api_services
   flutter_secure_storage: ^6.0.0
+  mockito: ^5.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
   
 
 # For information on the generic Dart part of this file, see the
