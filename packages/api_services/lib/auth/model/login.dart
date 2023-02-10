@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-class Login {
+import 'package:equatable/equatable.dart';
+
+class Login extends Equatable {
   Login({this.token, this.message});
 
   String? token;
@@ -17,25 +19,7 @@ class Login {
         "token": token,
         "message": message,
       };
+
+  @override
+  List<Object?> get props => [token, message];
 }
-
-// class Result {
-//   Result({required this.message, required this.token});
-
-//   String message;
-//   String token;
-
-//   factory Result.fromRawJson(String str) => Result.fromJson(json.decode(str));
-
-//   String toRawJson() => json.encode(toJson());
-
-//   factory Result.fromJson(Map<String, dynamic> json) => Result(
-//         message: json["message"],
-//         token: json["token"],
-//       );
-
-//   Map<String, dynamic> toJson() => {
-//         "message": message,
-//         "token": token,
-//       };
-// }
